@@ -137,7 +137,7 @@
 .product-container1 {
     display: grid;
     justify-content: space-around;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     background: lavenderblush;
     padding: 20px;
