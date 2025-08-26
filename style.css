@@ -5,7 +5,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #e0f7fa 0%, #f4f6f9 100%);
+    background: linear-gradient(135deg, #b3e5fc 0%, #e1bee7 100%);
     color: #333;
     font-family: 'Roboto', sans-serif;
 }
@@ -15,7 +15,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: linear-gradient(90deg, #1b1f3b, #243b55);
+    background: linear-gradient(90deg, #3f51b5, #5c6bc0);
     padding: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -33,7 +33,7 @@ body {
 }
 
 .navbar a:hover {
-    color: #00c897 !important;
+    color: #03a9f4 !important;
 }
 
 .card {
@@ -43,8 +43,8 @@ body {
     backdrop-filter: blur(8px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s, box-shadow 0.4s;
+    margin-bottom: 20px; /* Add margin to create gap between products */
 }
-
 .card:hover {
     transform: translateY(-7px);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
@@ -66,13 +66,13 @@ body {
 .card-title {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #1b1f3b;
+    color: #3f51b5;
 }
 
 .card-text {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #00c897;
+    color: #03a9f4;
 }
 
 .btn {
@@ -84,13 +84,13 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(90deg, #00c897, #009f76);
+    background: linear-gradient(90deg, #03a9f4, #0288d1);
     border: none;
     color: #fff;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(90deg, #009f76, #007a5e);
+    background: linear-gradient(90deg, #0288d1, #03a9f4);
     transform: scale(1.05);
 }
 
@@ -102,6 +102,7 @@ body {
 .btn-secondary:hover {
     background-color: #374151;
 }
+
 #cart-items {
     padding: 0;
 }
@@ -118,7 +119,6 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Quantity Controls */
 .quantity-controls {
     display: flex;
     align-items: center;
@@ -126,7 +126,7 @@ body {
 }
 
 .quantity-controls button {
-    background-color: #4CAF50; /* Light Green */
+    background-color: #03a9f4; 
     color: white;
     border: none;
     padding: 5px 10px;
@@ -137,7 +137,7 @@ body {
 }
 
 .quantity-controls button:hover {
-    background-color: #388E3C; /* Darker Green */
+    background-color: #0288d1; 
 }
 
 .quantity-controls span {
@@ -160,7 +160,6 @@ body {
 .btn-danger:hover {
     background-color: #c62828;
 }
-
 
 #cart-total {
     font-size: 18px;
@@ -195,7 +194,7 @@ body {
 }
 
 footer {
-    background: linear-gradient(90deg, #1b1f3b, #243b55);
+    background: linear-gradient(90deg, #3f51b5, #5c6bc0);
     color: white;
     padding: 20px;
     margin-top: 40px;
@@ -208,7 +207,7 @@ footer {
     width: 100%;
     max-width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9;
+    /* aspect-ratio: 16 / 9; */
     margin: 20px auto;
     display: flex;
     justify-content: center;
@@ -227,7 +226,7 @@ footer {
 }
 
 .contact-link:hover {
-    color: #007bff;
+    color: #03a9f4;
 }
 
 .cart-item-image {
@@ -245,6 +244,94 @@ footer {
     gap: 10px;
 }
 
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    width: 85%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #e53935;
+}
+
+.close-btn:hover {
+    color: #c62828;
+}
+
+#modal-image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin: 25px 0px 25px 0px;
+    background-color: antiquewhite;
+}
+
+#modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3f51b5;
+}
+
+#modal-description {
+    font-size: 1rem;
+    color: #000;
+    margin: 10px 0;
+}
+
+#modal-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #03a9f4;
+}
+
+.modal-content {
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
 
 @media (max-width: 768px) {
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
@@ -314,6 +401,7 @@ footer {
     footer {
         font-size: 14px;
     }
+
     .list-group-item {
         flex-direction: column;
         align-items: flex-start;
@@ -327,5 +415,61 @@ footer {
 
     .video-container {
         max-width: 90%;
+    }
+}
+.category-buttons .btn {
+    border-radius: 25px;
+    font-weight: 500;
+    padding: 8px 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+.category-buttons .btn:hover {
+    background-color: #0d6efd;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-buttons .btn:active {
+    transform: scale(0.95);
+}
+/* By default: show banner, hide video */
+.banner-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+.manufacture-video {
+    display: none;
+}
+
+/* On mobile screens: show video, hide banner */
+@media (max-width: 768px) {
+    .banner-img {
+        display: none;
+    }
+    .manufacture-video {
+        display: block;
+        width: 100%;
+        height: 250px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+}
+/* Hide heading by default (PC/Laptop) */
+.video-heading {
+    display: none;
+}
+
+/* Show heading only on mobile */
+@media (max-width: 768px) {
+    .video-heading {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        font-size: 1.5rem;
+        color: #333;
     }
 }
